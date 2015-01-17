@@ -11,8 +11,9 @@ module.exports = function(conf) {
   var render = conf.render;
   return Onus({
     render: function(DOM, $get, props, state, _yield, params, query, forms, t) {
-      var contents = render(format, $get, props, state, _yield, params, query, forms, t);
-      return DOM('style', null, '\n' + Array.isArray(contents) ? contents.join('') : contents);
+      var out = render(format, $get, props, state, _yield, params, query, forms, t);
+      var style = Array.isArray(out) ? out.join('') : out;
+      return DOM('style', null, '\n' + style);
     }
   });
 }
