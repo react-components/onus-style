@@ -24,6 +24,7 @@ function format(selectors, props) {
 function formatProps(props) {
   var parts = [];
   for (var k in props) {
+    if (k === 'key') continue;
     parts.push('  ' + k + ':' + props[k] + ';');
   }
   return parts.join('\n');
