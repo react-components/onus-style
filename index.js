@@ -19,7 +19,7 @@ module.exports = function(conf) {
 }
 
 function format(selectors, props) {
-  return selectors.join('\n') + ' {\n' + formatProps(props) + '\n}\n';
+  return selectors.join(',\n') + ' {\n' + formatProps(props) + '\n}\n';
 }
 
 function formatProps(props) {
