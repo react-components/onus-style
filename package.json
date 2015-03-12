@@ -1,6 +1,6 @@
 {
   "name": "onus-style",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "dynamically evaluate stylesheets",
   "main": "index.js",
   "scripts": {
