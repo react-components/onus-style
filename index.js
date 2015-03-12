@@ -8,8 +8,9 @@ module.exports = function(conf, toCSS) {
   var render = conf.render;
   return Onus({
     render: function(DOM, $get, props, state, _yield, params, query, forms, t) {
-      var out = render.call(this, toCSS, $get, props, state, _yield, params, query, forms, t);
-      return DOM('style', null, '\n' + flatten(out));
+      var out = render.call(this, toCSS, $get, props, state, _yield, params, query, forms, t) || '';
+      var css = Array.isArray(out) ? flatten(out) : out;
+      return DOM('style', null, '\n' + css);
     }
   });
 };
