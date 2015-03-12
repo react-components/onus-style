@@ -9,8 +9,14 @@ module.exports = function(conf, toCSS) {
   return Onus({
     render: function(DOM, $get, props, state, _yield, params, query, forms, t) {
       var out = render.call(this, toCSS, $get, props, state, _yield, params, query, forms, t);
-      var style = Array.isArray(out) ? out.join('') : out;
-      return DOM('style', null, '\n' + style);
+      return DOM('style', null, '\n' + flatten(out));
     }
   });
 };
+
+function flatten(arr) {
+  return arr.map(function(style) {
+    if (!style) return '';
+    return Array.isArray(style) ? flatten(style) : style;
+  }).join('');
+}
