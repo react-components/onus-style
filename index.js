@@ -10,7 +10,7 @@ module.exports = function(conf, toCSS) {
     render: function(DOM, $get, props, state, _yield, params, query, forms, t) {
       var out = render.call(this, toCSS, $get, props, state, _yield, params, query, forms, t) || '';
       var css = Array.isArray(out) ? flatten(out) : out;
-      return DOM('style', null, '\n' + css);
+      return DOM('style', {dangerouslySetInnerHTML: {__html: '\n' + css}});
     }
   });
 };
